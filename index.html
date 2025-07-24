@@ -9,7 +9,7 @@
   <ul id="lista"></ul>
 
   <script>
-    fetch('https://TUBACKEND.com/jugadores') // <-- CAMBIA ESTO por tu URL real del backend
+    fetch('https://localhost:8080/jugadores') // <-- CAMBIA ESTO por tu URL real del backend
       .then(res => res.json())
       .then(jugadores => {
         const lista = document.getElementById('lista');
