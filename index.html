@@ -1,13 +1,28 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>Mi página simple</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <title>Lista de jugadores</title>
 </head>
 <body>
-  <h1>Hola compañeros</h1>
-  <div id="contenido"></div>
-  <script src="script.js"></script>
+  <h1>Jugadores</h1>
+  <ul id="lista"></ul>
+
+  <script>
+    fetch('https://TUBACKEND.com/jugadores') // <-- CAMBIA ESTO por tu URL real del backend
+      .then(res => res.json())
+      .then(jugadores => {
+        const lista = document.getElementById('lista');
+        jugadores.forEach(j => {
+          const li = document.createElement('li');
+          li.textContent = j.nombre; // O j.nombre + ' - ' + j.equipo, según tu modelo
+          lista.appendChild(li);
+        });
+      })
+      .catch(err => {
+        document.body.innerHTML += '<p style="color:red;">Error al cargar jugadores</p>';
+        console.error(err);
+      });
+  </script>
 </body>
 </html>
